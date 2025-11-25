@@ -1,3 +1,9 @@
+//
+//  LaunchViewController.swift
+//  Task1Mentorship
+//
+//  Created by Gulnaz Kaztayeva on 31.10.2025.
+//
 import UIKit
 
 class LaunchViewController: UIViewController, UITableViewDataSource {
@@ -59,28 +65,22 @@ class LaunchViewController: UIViewController, UITableViewDataSource {
     }
 
     private func loadLaunches() {
-        guard let rocketId = rocketId,
-              let url = URL(string: "https://api.spacexdata.com/v5/launches") else { return }
+        guard let rocketId = rocketId else { return }
 
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil else {
-                print("Ошибка загрузки:", error?.localizedDescription ?? "")
-                return
+        Network.shared.fetch([Launch].self, from: "https://api.spacexdata.com/v5/launches") { result in
+            switch result {
+            case .success(let allLaunches):
+                self.launches = allLaunches
+                    .filter { $0.rocket == rocketId }
+                    .sorted { $0.date_utc > $1.date_utc }
+                self.tableView.reloadData()
+
+            case .failure(let error):
+                print("Ошибка:", error)
             }
-
-            do {
-                let allLaunches = try JSONDecoder().decode([Launch].self, from: data)
-                let filtered = allLaunches.filter { $0.rocket == rocketId }
-
-                DispatchQueue.main.async {
-                    self.launches = filtered.sorted(by: { $0.date_utc > $1.date_utc })
-                    self.tableView.reloadData()
-                }
-            } catch {
-                print("Ошибка парсинга:", error)
-            }
-        }.resume()
+        }
     }
+
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         launches.count

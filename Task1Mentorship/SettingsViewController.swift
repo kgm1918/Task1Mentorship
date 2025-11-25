@@ -1,3 +1,9 @@
+//
+//  SettingsViewController.swift
+//  Task1Mentorship
+//
+//  Created by Gulnaz Kaztayeva on 31.10.2025.
+//
 import UIKit
 
 class SettingsViewController: UIViewController {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830B51E52ED397D9001AEB83 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B51E42ED397D9001AEB83 /* Networking.swift */; };
 		83F942C02EB2A52C004BE1CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F942BF2EB2A52C004BE1CD /* AppDelegate.swift */; };
 		83F942C22EB2A52C004BE1CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F942C12EB2A52C004BE1CD /* SceneDelegate.swift */; };
 		83F942C42EB2A52C004BE1CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F942C32EB2A52C004BE1CD /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		830B51E42ED397D9001AEB83 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		83F942BC2EB2A52C004BE1CD /* Task1Mentorship.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Task1Mentorship.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F942BF2EB2A52C004BE1CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83F942C12EB2A52C004BE1CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				83F942D72EB3DC78004BE1CD /* RocketPageViewController.swift */,
 				83F942DF2EB53E24004BE1CD /* SettingsViewController.swift */,
 				83F942D92EB5014B004BE1CD /* Launch.swift */,
+				830B51E42ED397D9001AEB83 /* Networking.swift */,
 				83F942DB2EB50178004BE1CD /* LaunchViewController.swift */,
 				83F942DD2EB52002004BE1CD /* LaunchTableViewCell.swift */,
 				83F942D52EB3A711004BE1CD /* Rocket.swift */,
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F942D42EB3A665004BE1CD /* RocketViewController.swift in Sources */,
+				830B51E52ED397D9001AEB83 /* Networking.swift in Sources */,
 				83F942D82EB3DC78004BE1CD /* RocketPageViewController.swift in Sources */,
 				83F942C42EB2A52C004BE1CD /* ViewController.swift in Sources */,
 				83F942E02EB53E24004BE1CD /* SettingsViewController.swift in Sources */,

@@ -35,30 +35,20 @@ class RocketPageViewController: UIPageViewController, UIPageViewControllerDataSo
     }
 
     private func loadRockets() {
-        guard let url = URL(string: "https://api.spacexdata.com/v4/rockets") else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            if let error = error {
-                print("❌ Ошибка: \(error)")
-                return
-            }
-            guard let data = data else { return }
-            
-            do {
-                let rockets = try JSONDecoder().decode([Rocket].self, from: data)
-                DispatchQueue.main.async {
-                    self.rockets = rockets
-                    self.pageControl.numberOfPages = rockets.count
-                    if let first = rockets.first {
-                        let vc = RocketViewController()
-                        vc.rocket = first
-                        self.setViewControllers([vc], direction: .forward, animated: false)
-                    }
+        Network.shared.fetch([Rocket].self, from: "https://api.spacexdata.com/v4/rockets") { result in
+            switch result {
+            case .success(let rockets):
+                self.rockets = rockets
+                self.pageControl.numberOfPages = rockets.count
+                if let first = rockets.first {
+                    let vc = RocketViewController()
+                    vc.rocket = first
+                    self.setViewControllers([vc], direction: .forward, animated: false)
                 }
-            } catch {
-                print("❌ Ошибка декодирования: \(error)")
+            case .failure(let error):
+                print("Ошибка загрузки ракет:", error)
             }
-        }.resume()
+        }
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
